@@ -1,0 +1,818 @@
+{
+  "title": "Hookdeck Metrics Dashboard",
+  "description": "[[suggested_dashboards]]",
+  "widgets": [
+    {
+      "id": 4643392217539526,
+      "definition": {
+        "title": "Requests",
+        "title_size": "16",
+        "title_align": "left",
+        "type": "query_value",
+        "requests": [
+          {
+            "formulas": [{ "formula": "default_zero(query1)" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.total{service:hookdeck}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "response_format": "scalar"
+          }
+        ],
+        "autoscale": true,
+        "custom_unit": "",
+        "precision": 1,
+        "timeseries_background": {
+          "yaxis": { "include_zero": true },
+          "type": "area"
+        }
+      },
+      "layout": { "x": 0, "y": 0, "width": 3, "height": 2 }
+    },
+    {
+      "id": 543629227336634,
+      "definition": {
+        "title": "Rejected Requests",
+        "title_size": "16",
+        "title_align": "left",
+        "type": "query_value",
+        "requests": [
+          {
+            "formulas": [{ "formula": "default_zero(query1)" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.rejected{service:hookdeck}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "response_format": "scalar"
+          }
+        ],
+        "autoscale": true,
+        "precision": 1,
+        "timeseries_background": {
+          "yaxis": { "include_zero": true },
+          "type": "area"
+        }
+      },
+      "layout": { "x": 3, "y": 0, "width": 3, "height": 2 }
+    },
+    {
+      "id": 3242793202462284,
+      "definition": {
+        "title": "Events",
+        "title_size": "16",
+        "title_align": "left",
+        "type": "query_value",
+        "requests": [
+          {
+            "formulas": [{ "formula": "default_zero(query1)" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.total{service:hookdeck}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "response_format": "scalar"
+          }
+        ],
+        "autoscale": true,
+        "custom_unit": "",
+        "precision": 1,
+        "timeseries_background": {
+          "yaxis": { "include_zero": true },
+          "type": "area"
+        }
+      },
+      "layout": { "x": 6, "y": 0, "width": 3, "height": 2 }
+    },
+    {
+      "id": 3631215623303450,
+      "definition": {
+        "title": "Failed Events",
+        "title_size": "16",
+        "title_align": "left",
+        "type": "query_value",
+        "requests": [
+          {
+            "formulas": [{ "formula": "default_zero(query1)" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.failed{service:hookdeck}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "response_format": "scalar"
+          }
+        ],
+        "autoscale": true,
+        "custom_unit": "",
+        "precision": 1,
+        "timeseries_background": {
+          "yaxis": { "include_zero": true },
+          "type": "area"
+        }
+      },
+      "layout": { "x": 0, "y": 2, "width": 3, "height": 2 }
+    },
+    {
+      "id": 3198107829855158,
+      "definition": {
+        "title": "Attempts",
+        "title_size": "16",
+        "title_align": "left",
+        "type": "query_value",
+        "requests": [
+          {
+            "formulas": [{ "formula": "default_zero(query1)" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.attempts.total{service:hookdeck}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "response_format": "scalar"
+          }
+        ],
+        "autoscale": true,
+        "custom_unit": "",
+        "precision": 1,
+        "timeseries_background": {
+          "yaxis": { "include_zero": true },
+          "type": "area"
+        }
+      },
+      "layout": { "x": 3, "y": 2, "width": 3, "height": 2 }
+    },
+    {
+      "id": 889782733518168,
+      "definition": {
+        "title": "Failed Attempts",
+        "title_size": "16",
+        "title_align": "left",
+        "type": "query_value",
+        "requests": [
+          {
+            "formulas": [{ "formula": "default_zero(query1)" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.attempts.failed{service:hookdeck}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "response_format": "scalar"
+          }
+        ],
+        "autoscale": true,
+        "custom_unit": "",
+        "precision": 1,
+        "timeseries_background": {
+          "yaxis": { "include_zero": true },
+          "type": "area"
+        }
+      },
+      "layout": { "x": 6, "y": 2, "width": 3, "height": 2 }
+    },
+    {
+      "id": 763409561161770,
+      "definition": {
+        "title": "Request Per Source",
+        "title_size": "16",
+        "title_align": "left",
+        "requests": [
+          {
+            "response_format": "scalar",
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.total{source:*} by {source}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "formulas": [{ "formula": "query1" }],
+            "style": { "palette": "classic" }
+          }
+        ],
+        "type": "sunburst",
+        "legend": { "type": "automatic" }
+      },
+      "layout": { "x": 0, "y": 4, "width": 9, "height": 5 }
+    },
+    {
+      "id": 6463219253022286,
+      "definition": {
+        "title": "Attempts Per Destination",
+        "title_size": "16",
+        "title_align": "left",
+        "requests": [
+          {
+            "response_format": "scalar",
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.attempts.total{destination:*} by {destination}.as_count()",
+                "aggregator": "sum"
+              }
+            ],
+            "formulas": [{ "formula": "query1" }],
+            "style": { "palette": "classic" }
+          }
+        ],
+        "type": "sunburst",
+        "legend": { "type": "automatic" }
+      },
+      "layout": { "x": 0, "y": 9, "width": 9, "height": 5 }
+    },
+    {
+      "id": 64010451479066,
+      "definition": {
+        "title": "Queued Messages",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": true,
+        "legend_layout": "auto",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [{ "formula": "query1" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.queue_depth.message_count{*} by {destination}.as_count().rollup(avg)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 14, "width": 9, "height": 4 }
+    },
+    {
+      "id": 3105081063320728,
+      "definition": {
+        "title": "Oldest Message Age",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": true,
+        "legend_layout": "auto",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              {
+                "alias": "Oldest Queued Message Age (minutes)",
+                "formula": "default_zero(default_zero(query1) / 60)"
+              }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.queue_depth.message_max_age{*} by {destination}.as_count().rollup(avg)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 18, "width": 9, "height": 4 }
+    },
+    {
+      "id": 4669401921313336,
+      "definition": {
+        "title": "Total Requests",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "auto",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [{ "formula": "default_zero(query1 + query2)" }],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.accepted{service:hookdeck} by {source}.as_count().rollup(sum)"
+              },
+              {
+                "name": "query2",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.rejected{service:hookdeck} by {source}.as_count().rollup(sum)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 22, "width": 9, "height": 4 }
+    },
+    {
+      "id": 4154260737224618,
+      "definition": {
+        "title": "Accepted Requests",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "auto",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              { "alias": "requests", "formula": "default_zero(query1)" }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.accepted{service:hookdeck} by {source}.as_count().rollup()"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 26, "width": 9, "height": 4 }
+    },
+    {
+      "id": 7205170898963664,
+      "definition": {
+        "title": "Rejected Requests",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "auto",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              { "alias": "requests", "formula": "default_zero(query1)" }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.rejected{service:hookdeck} by {source}.as_count().rollup(sum)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 30, "width": 9, "height": 4 }
+    },
+    {
+      "id": 7665350691725386,
+      "definition": {
+        "title": "Average Events Per Request",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "auto",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              {
+                "alias": "events",
+                "formula": "default_zero(query1 / (query2 + query3))"
+              }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.events{service:hookdeck} by {source}.as_count().rollup(sum)"
+              },
+              {
+                "name": "query2",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.accepted{service:hookdeck} by {source}.as_count().rollup(sum)"
+              },
+              {
+                "name": "query3",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.rejected{service:hookdeck} by {source}.as_count().rollup(sum)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 34, "width": 9, "height": 4 }
+    },
+    {
+      "id": 8999963659250366,
+      "definition": {
+        "title": "Average Ignored Events",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "auto",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              {
+                "alias": "events",
+                "formula": "default_zero(query1 / (query2 + query3))"
+              }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.ignored{service:hookdeck} by {source}.as_count()"
+              },
+              {
+                "name": "query2",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.accepted{service:hookdeck} by {source}.as_count()"
+              },
+              {
+                "name": "query3",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.requests.rejected{service:hookdeck}.as_count()"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 38, "width": 9, "height": 4 }
+    },
+    {
+      "id": 8376262107482012,
+      "definition": {
+        "title": "Total Events",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              { "alias": "events", "formula": "default_zero(query1)" }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.total{*} by {connection}.as_count().rollup(sum)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 42, "width": 9, "height": 5 }
+    },
+    {
+      "id": 4592654410448858,
+      "definition": {
+        "title": "Successful Events",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              {
+                "alias": "successful events",
+                "formula": "default_zero(query1)"
+              }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.successful{*} by {connection}.as_count().rollup(sum)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 47, "width": 9, "height": 5 }
+    },
+    {
+      "id": 7582990960331550,
+      "definition": {
+        "title": "Failed Events",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              { "alias": "failed events", "formula": "default_zero(query1)" }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.failed{*} by {connection}.as_count()"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 52, "width": 9, "height": 5 }
+    },
+    {
+      "id": 1087477264047768,
+      "definition": {
+        "title": "Error Rate",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              {
+                "alias": "error rate %",
+                "formula": "default_zero((query1 / query2) * 100)"
+              }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.failed{*}.as_count()"
+              },
+              {
+                "name": "query2",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.total{*}.as_count()"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 57, "width": 9, "height": 5 }
+    },
+    {
+      "id": 3909589060268042,
+      "definition": {
+        "title": "Average Attempts per Event",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              {
+                "alias": "avg attempts per event",
+                "formula": "default_zero(query1 / query2)"
+              }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.attempts.total{*}.as_count()"
+              },
+              {
+                "name": "query2",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.events.total{*}.as_count()"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 62, "width": 9, "height": 5 }
+    },
+    {
+      "id": 8149461199320070,
+      "definition": {
+        "title": "Total Attempts",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              { "alias": "attempts", "formula": "default_zero(query1)" }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "avg:hookdeck.attempts.total{*} by {destination}.as_count().rollup()"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ]
+      },
+      "layout": { "x": 0, "y": 67, "width": 9, "height": 5 }
+    },
+    {
+      "id": 3359323142817458,
+      "definition": {
+        "title": "Delivered Attempts",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              {
+                "alias": "attempts",
+                "formula": "default_zero((query1 + query2))"
+              }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.attempts.delivered{*} by {destination}.as_count().rollup(sum)"
+              },
+              {
+                "name": "query2",
+                "data_source": "metrics",
+                "query": "sum:hookdeck.attempts.failed{*} by {destination}.as_count().rollup(sum)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ],
+        "yaxis": { "include_zero": false, "scale": "linear", "min": "auto" },
+        "markers": []
+      },
+      "layout": { "x": 0, "y": 72, "width": 9, "height": 5 }
+    },
+    {
+      "id": 5355089177269664,
+      "definition": {
+        "title": "Avg. Response Latency",
+        "title_size": "16",
+        "title_align": "left",
+        "show_legend": false,
+        "legend_layout": "vertical",
+        "legend_columns": ["avg", "min", "max", "value", "sum"],
+        "type": "timeseries",
+        "requests": [
+          {
+            "formulas": [
+              { "alias": "latency", "formula": "default_zero(query1)" }
+            ],
+            "queries": [
+              {
+                "name": "query1",
+                "data_source": "metrics",
+                "query": "avg:hookdeck.attempts.response_latency{service:hookdeck} by {destination}.as_count().rollup(avg)"
+              }
+            ],
+            "response_format": "timeseries",
+            "style": {
+              "palette": "dog_classic",
+              "line_type": "solid",
+              "line_width": "normal"
+            },
+            "display_type": "bars"
+          }
+        ],
+        "yaxis": { "include_zero": true, "min": "0" },
+        "markers": []
+      },
+      "layout": { "x": 0, "y": 77, "width": 9, "height": 5 }
+    }
+  ],
+  "template_variables": [],
+  "layout_type": "ordered",
+  "notify_list": [],
+  "reflow_type": "fixed"
+}
