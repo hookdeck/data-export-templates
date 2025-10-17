@@ -1,0 +1,1038 @@
+\{
+    "name": "Hookdeck Metrics Dashboard",
+    "description": "Comprehensive metrics dashboard for Hookdeck service monitoring",
+    "permissions": "PUBLIC_READ_WRITE",
+    "pages": [
+      {
+        "guid": "NzE3NTY2MXxWSVp8REFTSEJPQVJEfDQ0NTIwMjMw",
+        "name": "Overview",
+        "description": "Key metrics and performance indicators",
+        "widgets": [
+          {
+            "id": "494650805",
+            "title": "Requests",
+            "layout": {
+              "column": 1,
+              "row": 1,
+              "width": 4,
+              "height": 3
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.billboard"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.total) FROM Metric WHERE service = 'hookdeck' SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": []
+            }
+          },
+          {
+            "id": "494650806",
+            "title": "Rejected Requests",
+            "layout": {
+              "column": 5,
+              "row": 1,
+              "width": 4,
+              "height": 3
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.billboard"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.rejected) FROM Metric WHERE service = 'hookdeck' SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": []
+            }
+          },
+          {
+            "id": "494650807",
+            "title": "Events",
+            "layout": {
+              "column": 9,
+              "row": 1,
+              "width": 4,
+              "height": 3
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.billboard"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.events.total) FROM Metric WHERE service = 'hookdeck' SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": []
+            }
+          },
+          {
+            "id": "494650808",
+            "title": "Failed Events",
+            "layout": {
+              "column": 1,
+              "row": 4,
+              "width": 4,
+              "height": 3
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.billboard"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.events.failed) FROM Metric WHERE service = 'hookdeck' SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": []
+            }
+          },
+          {
+            "id": "494650809",
+            "title": "Attempts",
+            "layout": {
+              "column": 5,
+              "row": 4,
+              "width": 4,
+              "height": 3
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.billboard"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.attempts.total) FROM Metric WHERE service = 'hookdeck' SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": []
+            }
+          },
+          {
+            "id": "494650810",
+            "title": "Failed Attempts",
+            "layout": {
+              "column": 9,
+              "row": 4,
+              "width": 4,
+              "height": 3
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.billboard"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.attempts.failed) FROM Metric WHERE service = 'hookdeck' SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": []
+            }
+          },
+          {
+            "id": "494650811",
+            "title": "Requests Per Source",
+            "layout": {
+              "column": 1,
+              "row": 7,
+              "width": 12,
+              "height": 4
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.pie"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.total) FROM Metric WHERE service = 'hookdeck' FACET source SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              }
+            }
+          },
+          {
+            "id": "494650812",
+            "title": "Attempts Per Destination",
+            "layout": {
+              "column": 1,
+              "row": 11,
+              "width": 12,
+              "height": 4
+            },
+            "linkedEntityGuids": null,
+            "visualization": {
+              "id": "viz.pie"
+            },
+            "rawConfiguration": {
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.attempts.total) FROM Metric WHERE service = 'hookdeck' FACET destination SINCE 1 hour ago"
+                }
+              ],
+              "platformOptions": {
+                "ignoreTimeRange": false
+              }
+            }
+          },
+          {
+            "id": "494650813",
+            "title": "Queued Messages",
+            "layout": {
+              "column": 1,
+              "row": 15,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT average(hookdeck.queue_depth.message_count) FROM Metric FACET destination SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650814",
+            "title": "Oldest Message Age (minutes)",
+            "layout": {
+              "column": 1,
+              "row": 18,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT average(hookdeck.queue_depth.message_max_age) / 60 FROM Metric FACET destination SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650815",
+            "title": "Total Requests",
+            "layout": {
+              "column": 1,
+              "row": 21,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.accepted) + sum(hookdeck.requests.rejected) FROM Metric WHERE service = 'hookdeck' FACET source SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650816",
+            "title": "Accepted Requests",
+            "layout": {
+              "column": 1,
+              "row": 24,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.accepted) FROM Metric WHERE service = 'hookdeck' FACET source SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650817",
+            "title": "Rejected Requests",
+            "layout": {
+              "column": 1,
+              "row": 27,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.rejected) FROM Metric WHERE service = 'hookdeck' FACET source SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650818",
+            "title": "Average Events Per Request",
+            "layout": {
+              "column": 1,
+              "row": 30,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.events) / (sum(hookdeck.requests.accepted) + sum(hookdeck.requests.rejected)) FROM Metric WHERE service = 'hookdeck' FACET source SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650819",
+            "title": "Average Ignored Events Per Request",
+            "layout": {
+              "column": 1,
+              "row": 33,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.requests.ignored) / (sum(hookdeck.requests.accepted) + sum(hookdeck.requests.rejected)) FROM Metric WHERE service = 'hookdeck' FACET source SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650820",
+            "title": "Total Events",
+            "layout": {
+              "column": 1,
+              "row": 36,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.events.total) FROM Metric FACET connection SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650821",
+            "title": "Successful Events",
+            "layout": {
+              "column": 1,
+              "row": 39,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.events.successful) FROM Metric FACET connection SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650822",
+            "title": "Failed Events",
+            "layout": {
+              "column": 1,
+              "row": 42,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.events.failed) FROM Metric FACET connection SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650823",
+            "title": "Error Rate (%)",
+            "layout": {
+              "column": 1,
+              "row": 45,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT (sum(hookdeck.events.failed) / sum(hookdeck.events.total)) * 100 FROM Metric SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650824",
+            "title": "Average Attempts Per Event",
+            "layout": {
+              "column": 1,
+              "row": 48,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.attempts.total) / sum(hookdeck.events.total) FROM Metric SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650825",
+            "title": "Total Attempts",
+            "layout": {
+              "column": 1,
+              "row": 51,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.attempts.total) FROM Metric FACET destination SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650826",
+            "title": "Delivered Attempts",
+            "layout": {
+              "column": 1,
+              "row": 54,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.attempts.delivered) + sum(hookdeck.attempts.failed) FROM Metric FACET destination SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650827",
+            "title": "Average Response Latency",
+            "layout": {
+              "column": 1,
+              "row": 57,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT average(hookdeck.attempts.response_latency) FROM Metric WHERE service = 'hookdeck' FACET destination SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          },
+          {
+            "id": "494650828",
+            "title": "Issue Count",
+            "layout": {
+              "column": 1,
+              "row": 60,
+              "width": 12,
+              "height": 3
+            },
+            "linkedEntityGuids": [],
+            "visualization": {
+              "id": "viz.line"
+            },
+            "rawConfiguration": {
+              "facet": {
+                "showOtherSeries": false
+              },
+              "legend": {
+                "enabled": true
+              },
+              "markers": {
+                "displayedTypes": {
+                  "criticalViolations": false,
+                  "deployments": true,
+                  "relatedDeployments": true,
+                  "warningViolations": false
+                }
+              },
+              "nrqlQueries": [
+                {
+                  "accountIds": [YOUR_ACCOUNT_ID],
+                  "query": "SELECT sum(hookdeck.issues.count) FROM Metric FACET type SINCE 1 hour ago TIMESERIES AUTO"
+                }
+              ],
+              "nullValues": {
+                "nullValue": "zero"
+              },
+              "platformOptions": {
+                "ignoreTimeRange": false
+              },
+              "thresholds": {
+                "isLabelVisible": true
+              },
+              "yAxisLeft": {
+                "zero": true
+              },
+              "yAxisRight": {
+                "zero": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "variables": []
+  }
+  
