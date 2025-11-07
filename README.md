@@ -84,12 +84,14 @@ A New Relic dashboard template with comprehensive monitoring panels including:
 
 ## Template Details
 
-Both templates include the core metrics you need to monitor webhook infrastructure health:
+All templates provide comprehensive monitoring for your webhook infrastructure with metrics including:
 
-- **Queue Monitoring**: Track pending events and backlog depth
-- **Error Rates**: Monitor failed requests, events, and delivery attempts
-- **Performance**: Observe response latencies and processing rates
-- **Resource Usage**: View breakdowns by sources, connections, and destinations
+- **Request Tracking**: Monitor total, accepted, and rejected requests
+- **Event Processing**: Track event success, failures, and processing rates
+- **Delivery Attempts**: View attempt counts, success rates, and failures
+- **Queue Monitoring**: Track pending events and message age (Datadog and New Relic)
+- **Performance Metrics**: Observe response latencies and error rates
+- **Resource Breakdowns**: View metrics by sources, connections, and destinations
 
 For detailed information about each metric, see the [metrics documentation](https://hookdeck.com/docs/metrics).
 
