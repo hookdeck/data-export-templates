@@ -31,6 +31,19 @@ A Grafana dashboard template designed for Prometheus data sources with panels fo
 - Queue depth by destination
 - Response latency averages
 
+### New Relic Template
+
+**File**: [`new-relic/template.json`](new-relic/template.json)
+
+A New Relic dashboard template with comprehensive monitoring panels including:
+
+- Request metrics (total, accepted, rejected)
+- Event processing (total, successful, failed)
+- Delivery attempts (total, delivered, failed)
+- Queue monitoring (queued messages, oldest message age)
+- Performance metrics (response latency, error rate, average attempts per event)
+- Resource breakdowns (requests per source, attempts per destination)
+
 ## Quick Start
 
 ### Datadog Setup
@@ -59,6 +72,15 @@ A Grafana dashboard template designed for Prometheus data sources with panels fo
    - Download [`prometheus/template.json`](prometheus/template.json)
    - In Grafana: **Dashboards** → **New** → **Import**
    - Upload the JSON file and select your Prometheus data source
+
+### New Relic Setup
+
+1. **Enable Integration**: Follow the [New Relic export setup instructions](https://hookdeck.com/docs/metrics#exporting-to-new-relic)
+2. **Import Template**:
+   - Download [`new-relic/template.json`](new-relic/template.json)
+   - In New Relic, go to **Dashboards** → **Import dashboard**
+   - Upload the template file
+   - Replace `YOUR_ACCOUNT_ID` in the queries with your actual New Relic account ID
 
 ## Template Details
 
