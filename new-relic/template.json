@@ -1,4 +1,4 @@
-\{
+{
     "name": "Hookdeck Metrics Dashboard",
     "description": "Comprehensive metrics dashboard for Hookdeck service monitoring",
     "permissions": "PUBLIC_READ_WRITE",
