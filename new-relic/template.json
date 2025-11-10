@@ -978,57 +978,6 @@
                 "zero": true
               }
             }
-          },
-          {
-            "id": "494650828",
-            "title": "Issue Count",
-            "layout": {
-              "column": 1,
-              "row": 60,
-              "width": 12,
-              "height": 3
-            },
-            "linkedEntityGuids": [],
-            "visualization": {
-              "id": "viz.line"
-            },
-            "rawConfiguration": {
-              "facet": {
-                "showOtherSeries": false
-              },
-              "legend": {
-                "enabled": true
-              },
-              "markers": {
-                "displayedTypes": {
-                  "criticalViolations": false,
-                  "deployments": true,
-                  "relatedDeployments": true,
-                  "warningViolations": false
-                }
-              },
-              "nrqlQueries": [
-                {
-                  "accountIds": [YOUR_ACCOUNT_ID],
-                  "query": "SELECT sum(hookdeck.issues.count) FROM Metric FACET type SINCE 1 hour ago TIMESERIES AUTO"
-                }
-              ],
-              "nullValues": {
-                "nullValue": "zero"
-              },
-              "platformOptions": {
-                "ignoreTimeRange": false
-              },
-              "thresholds": {
-                "isLabelVisible": true
-              },
-              "yAxisLeft": {
-                "zero": true
-              },
-              "yAxisRight": {
-                "zero": true
-              }
-            }
           }
         ]
       }

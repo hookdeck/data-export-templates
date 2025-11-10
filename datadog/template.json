@@ -809,39 +809,6 @@
         "markers": []
       },
       "layout": { "x": 0, "y": 77, "width": 9, "height": 5 }
-    },
-    {
-      "id": 3410696843210454,
-      "definition": {
-        "title": "Issue Count",
-        "title_size": "16",
-        "title_align": "left",
-        "show_legend": true,
-        "legend_layout": "auto",
-        "legend_columns": ["avg", "min", "max", "value", "sum"],
-        "type": "timeseries",
-        "requests": [
-          {
-            "response_format": "timeseries",
-            "queries": [
-              {
-                "data_source": "metrics",
-                "name": "query1",
-                "query": "sum:hookdeck.issues.count{*} by {type}.as_count()"
-              }
-            ],
-            "formulas": [{ "formula": "query1" }],
-            "style": {
-              "palette": "dog_classic",
-              "order_by": "values",
-              "line_type": "solid",
-              "line_width": "normal"
-            },
-            "display_type": "line"
-          }
-        ]
-      },
-      "layout": { "x": 0, "y": 82, "width": 9, "height": 4 }
     }
   ],
   "template_variables": [],
