@@ -1,0 +1,408 @@
+{
+  "version": 21,
+  "variables": [],
+  "tiles": {
+    "0": {
+      "type": "markdown",
+      "content": "# Hookdeck Metrics\nRequests, events and delivery attempts exported by Hookdeck. See the [metrics docs](https://hookdeck.com/docs/metrics#exporting-to-dynatrace)."
+    },
+    "1": {
+      "type": "data",
+      "title": "Requests",
+      "query": "timeseries requests = sum(hookdeck.requests.total, scalar: true), filter: {service == \"hookdeck\"}\n| fields requests",
+      "visualization": "singleValue",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "2": {
+      "type": "data",
+      "title": "Rejected Requests",
+      "query": "timeseries rejected = sum(hookdeck.requests.rejected, scalar: true), filter: {service == \"hookdeck\"}\n| fields rejected",
+      "visualization": "singleValue",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "3": {
+      "type": "data",
+      "title": "Events",
+      "query": "timeseries events = sum(hookdeck.events.total, scalar: true), filter: {service == \"hookdeck\"}\n| fields events",
+      "visualization": "singleValue",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "4": {
+      "type": "data",
+      "title": "Failed Events",
+      "query": "timeseries failed = sum(hookdeck.events.failed, scalar: true), filter: {service == \"hookdeck\"}\n| fields failed",
+      "visualization": "singleValue",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "5": {
+      "type": "data",
+      "title": "Attempts",
+      "query": "timeseries attempts = sum(hookdeck.attempts.total, scalar: true), filter: {service == \"hookdeck\"}\n| fields attempts",
+      "visualization": "singleValue",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "6": {
+      "type": "data",
+      "title": "Failed Attempts",
+      "query": "timeseries failed = sum(hookdeck.attempts.failed, scalar: true), filter: {service == \"hookdeck\"}\n| fields failed",
+      "visualization": "singleValue",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "7": {
+      "type": "data",
+      "title": "Requests Per Source",
+      "query": "timeseries requests = sum(hookdeck.requests.total, scalar: true), by: {source}, filter: {service == \"hookdeck\"}\n| fields source, requests",
+      "visualization": "pieChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "8": {
+      "type": "data",
+      "title": "Attempts Per Destination",
+      "query": "timeseries attempts = sum(hookdeck.attempts.total, scalar: true), by: {destination}, filter: {service == \"hookdeck\"}\n| fields destination, attempts",
+      "visualization": "pieChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "9": {
+      "type": "markdown",
+      "content": "## Queue and latency"
+    },
+    "10": {
+      "type": "data",
+      "title": "Queued Events",
+      "query": "timeseries queued = max(hookdeck.queue_depth.message_count), by: {destination}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "11": {
+      "type": "data",
+      "title": "Average Response Latency (ms)",
+      "query": "timeseries latency = avg(hookdeck.attempts.response_latency), by: {destination}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "12": {
+      "type": "data",
+      "title": "p95 Response Latency (ms)",
+      "query": "timeseries p95 = max(hookdeck.attempts.response_latency_p95), by: {destination}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "13": {
+      "type": "data",
+      "title": "p99 Response Latency (ms)",
+      "query": "timeseries p99 = max(hookdeck.attempts.response_latency_p99), by: {destination}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "14": {
+      "type": "markdown",
+      "content": "## Requests"
+    },
+    "15": {
+      "type": "data",
+      "title": "Total Requests",
+      "query": "timeseries requests = sum(hookdeck.requests.total), by: {source}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "16": {
+      "type": "data",
+      "title": "Accepted Requests",
+      "query": "timeseries accepted = sum(hookdeck.requests.accepted), by: {source}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "17": {
+      "type": "data",
+      "title": "Rejected Requests",
+      "query": "timeseries rejected = sum(hookdeck.requests.rejected), by: {source}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "18": {
+      "type": "data",
+      "title": "Ignored Events",
+      "query": "timeseries ignored = sum(hookdeck.requests.ignored), by: {source}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "19": {
+      "type": "data",
+      "title": "Average Events Per Request",
+      "query": "timeseries { created = sum(hookdeck.requests.events, default: 0), requests = sum(hookdeck.requests.total) }, by: {source}, filter: {service == \"hookdeck\"}\n| fieldsAdd events_per_request = created[] / requests[]\n| fields timeframe, interval, source, events_per_request",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "20": {
+      "type": "markdown",
+      "content": "## Events"
+    },
+    "21": {
+      "type": "data",
+      "title": "Total Events",
+      "query": "timeseries events = sum(hookdeck.events.total), by: {connection}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "22": {
+      "type": "data",
+      "title": "Successful Events",
+      "query": "timeseries successful = sum(hookdeck.events.successful), by: {connection}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "23": {
+      "type": "data",
+      "title": "Failed Events",
+      "query": "timeseries failed = sum(hookdeck.events.failed), by: {connection}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "24": {
+      "type": "data",
+      "title": "Error Rate (%)",
+      "query": "timeseries { failed = sum(hookdeck.events.failed, default: 0), events = sum(hookdeck.events.total) }, filter: {service == \"hookdeck\"}\n| fieldsAdd error_rate = failed[] / events[] * 100\n| fields timeframe, interval, error_rate",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "25": {
+      "type": "markdown",
+      "content": "## Attempts"
+    },
+    "26": {
+      "type": "data",
+      "title": "Total Attempts",
+      "query": "timeseries attempts = sum(hookdeck.attempts.total), by: {destination}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "27": {
+      "type": "data",
+      "title": "Delivered Attempts",
+      "query": "timeseries delivered = sum(hookdeck.attempts.delivered), by: {destination}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "28": {
+      "type": "data",
+      "title": "Failed Attempts",
+      "query": "timeseries failed = sum(hookdeck.attempts.failed), by: {destination}, filter: {service == \"hookdeck\"}",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    },
+    "29": {
+      "type": "data",
+      "title": "Average Attempts Per Event",
+      "query": "timeseries { attempts = sum(hookdeck.attempts.total, default: 0), events = sum(hookdeck.events.total) }, filter: {service == \"hookdeck\"}\n| fieldsAdd attempts_per_event = attempts[] / events[]\n| fields timeframe, interval, attempts_per_event",
+      "visualization": "lineChart",
+      "visualizationSettings": {},
+      "querySettings": {}
+    }
+  },
+  "layouts": {
+    "0": {
+      "x": 0,
+      "y": 0,
+      "w": 24,
+      "h": 2
+    },
+    "1": {
+      "x": 0,
+      "y": 2,
+      "w": 8,
+      "h": 4
+    },
+    "2": {
+      "x": 8,
+      "y": 2,
+      "w": 8,
+      "h": 4
+    },
+    "3": {
+      "x": 16,
+      "y": 2,
+      "w": 8,
+      "h": 4
+    },
+    "4": {
+      "x": 0,
+      "y": 6,
+      "w": 8,
+      "h": 4
+    },
+    "5": {
+      "x": 8,
+      "y": 6,
+      "w": 8,
+      "h": 4
+    },
+    "6": {
+      "x": 16,
+      "y": 6,
+      "w": 8,
+      "h": 4
+    },
+    "7": {
+      "x": 0,
+      "y": 10,
+      "w": 12,
+      "h": 7
+    },
+    "8": {
+      "x": 12,
+      "y": 10,
+      "w": 12,
+      "h": 7
+    },
+    "9": {
+      "x": 0,
+      "y": 17,
+      "w": 24,
+      "h": 1
+    },
+    "10": {
+      "x": 0,
+      "y": 18,
+      "w": 12,
+      "h": 7
+    },
+    "11": {
+      "x": 12,
+      "y": 18,
+      "w": 12,
+      "h": 7
+    },
+    "12": {
+      "x": 0,
+      "y": 25,
+      "w": 12,
+      "h": 7
+    },
+    "13": {
+      "x": 12,
+      "y": 25,
+      "w": 12,
+      "h": 7
+    },
+    "14": {
+      "x": 0,
+      "y": 32,
+      "w": 24,
+      "h": 1
+    },
+    "15": {
+      "x": 0,
+      "y": 33,
+      "w": 12,
+      "h": 7
+    },
+    "16": {
+      "x": 12,
+      "y": 33,
+      "w": 12,
+      "h": 7
+    },
+    "17": {
+      "x": 0,
+      "y": 40,
+      "w": 12,
+      "h": 7
+    },
+    "18": {
+      "x": 12,
+      "y": 40,
+      "w": 12,
+      "h": 7
+    },
+    "19": {
+      "x": 0,
+      "y": 47,
+      "w": 24,
+      "h": 7
+    },
+    "20": {
+      "x": 0,
+      "y": 54,
+      "w": 24,
+      "h": 1
+    },
+    "21": {
+      "x": 0,
+      "y": 55,
+      "w": 12,
+      "h": 7
+    },
+    "22": {
+      "x": 12,
+      "y": 55,
+      "w": 12,
+      "h": 7
+    },
+    "23": {
+      "x": 0,
+      "y": 62,
+      "w": 12,
+      "h": 7
+    },
+    "24": {
+      "x": 12,
+      "y": 62,
+      "w": 12,
+      "h": 7
+    },
+    "25": {
+      "x": 0,
+      "y": 69,
+      "w": 24,
+      "h": 1
+    },
+    "26": {
+      "x": 0,
+      "y": 70,
+      "w": 12,
+      "h": 7
+    },
+    "27": {
+      "x": 12,
+      "y": 70,
+      "w": 12,
+      "h": 7
+    },
+    "28": {
+      "x": 0,
+      "y": 77,
+      "w": 12,
+      "h": 7
+    },
+    "29": {
+      "x": 12,
+      "y": 77,
+      "w": 12,
+      "h": 7
+    }
+  }
+}

@@ -44,6 +44,19 @@ A New Relic dashboard template with comprehensive monitoring panels including:
 - Performance metrics (response latency, error rate, average attempts per event)
 - Resource breakdowns (requests per source, attempts per destination)
 
+### Dynatrace Template
+
+**File**: [`dynatrace/template.json`](dynatrace/template.json)
+
+A dashboard for the Dynatrace Dashboards app, with DQL queries for:
+
+- Request metrics (total, accepted, rejected, ignored)
+- Event processing (total, successful, failed, error rate)
+- Delivery attempts (total, delivered, failed, average attempts per event)
+- Queue monitoring (pending events per destination)
+- Performance metrics (average, p95 and p99 response latency)
+- Resource breakdowns (requests per source, attempts per destination)
+
 ## Quick Start
 
 ### Datadog Setup
@@ -81,6 +94,14 @@ A New Relic dashboard template with comprehensive monitoring panels including:
    - In New Relic, go to **Dashboards** → **Import dashboard**
    - Upload the template file
    - Replace `YOUR_ACCOUNT_ID` in the queries with your actual New Relic account ID
+
+### Dynatrace Setup
+
+1. **Enable Integration**: Follow the [Dynatrace export setup instructions](https://hookdeck.com/docs/metrics#exporting-to-dynatrace)
+2. **Import Template**:
+   - Download [`dynatrace/template.json`](dynatrace/template.json)
+   - In Dynatrace, open the **Dashboards** app and select **Upload**
+   - Select the template file
 
 ## Template Details
 
